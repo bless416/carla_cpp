@@ -1,6 +1,6 @@
 :: 将生成的html文档部署到OpenHUTB页面上
 
-xcopy Doxygen %TEMP%  /q /e /r /S /Y
+xcopy Doxygen %TEMP%  /q /e /r /S /Y#使用xcopy命令将名为Doxygen的文件夹复制到%TEMP%目录下
 
 git checkout main
 
