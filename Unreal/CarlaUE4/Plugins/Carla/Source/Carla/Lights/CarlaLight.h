@@ -19,7 +19,12 @@
 #define CARLA_ENUM_FROM_RPC(e) static_cast<uint8>(carla::rpc::LightState::LightGroup:: e)
 
 UENUM(BlueprintType)
-enum class ELightType : uint8
+enum class ELightType : uint8// This macro exposes the enum to Blueprints, allowing it to be used in Unreal Engine's visual scripting system.  
+enum class ELightType : uint8 // Define a new enum class named ELightType with underlying type uint8 (8-bit unsigned integer).  
+{  
+  Null      = 0, // Represents a null or uninitialized state. This is a workaround for an issue in UE4.24 with enums.  
+
+  // Enum values with RPC (Remote Procedure Call) macros. These represent different types of lights.  
 {
   Null      = 0, // Workarround for UE4.24 issue with enums
   Vehicle   = CARLA_ENUM_FROM_RPC(Vehicle)    UMETA(DisplayName = "Vehicle"),
