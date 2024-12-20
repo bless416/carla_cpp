@@ -84,7 +84,7 @@ def get_libcarla_extensions():
             ]
             if is_rss_variant_enabled():
                 extra_compile_args += ['-DLIBCARLA_RSS_ENABLED']
-                extra_compile_args += ['-DLIBCARLA_PYTHON_MAJOR_' +  str(sys.version_info.major)]
+                extra_compile_args += ['-DLIBCARLA_PYTHON_MAJOR_' +  str(sys.version_info.major)]#定义额外的编译参数列表
                 extra_link_args += [os.path.join(pwd, 'dependencies/lib/libad_rss_map_integration_python' +  str(sys.version_info.major) + str(sys.version_info.minor) + '.a')]
                 extra_link_args += [os.path.join(pwd, 'dependencies/lib/libad_rss_map_integration.a')]
                 extra_link_args += [os.path.join(pwd, 'dependencies/lib/libad_map_access_python' +  str(sys.version_info.major) + str(sys.version_info.minor) + '.a')]
@@ -181,16 +181,16 @@ with open("README.md") as f:
     long_description = f.read()
 
 setup(
-    name='carla',
+    name='carla',#定义一个名为carla的python包相关设置
     version='0.9.15',
-    package_dir={'': 'source'},
-    packages=['carla'],
-    ext_modules=get_libcarla_extensions(),
-    license=get_license(),
-    description='Python API for communicating with the CARLA server.',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
-    url='https://github.com/carla-simulator/carla',
-    author='The CARLA team',
-    author_email='carla.simulator@gmail.com',
-    include_package_data=True)
+     package_dir={'': 'source'},#定义包的目录结构
+    packages=['carla'],#列出这个包包含的子包
+    ext_modules=get_libcarla_extensions(),#获取拓展模块
+    license=get_license(),#获取许可证相关信息
+    description='Python API for communicating with the CARLA server.',#对包的简单描述
+    long_description=long_description,#长描述内容
+    long_description_content_type='text/markdown',#长描述内容
+    url='https://github.com/carla-simulator/carla',#包的项目网址
+    author='The CARLA team',#包的作者
+    author_email='carla.simulator@gmail.com',#作者邮件地址
+    include_package_data=True)#表示包含包中的数据文件
